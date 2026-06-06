@@ -1,8 +1,3 @@
-/* =====================================================
-   MAURICIO SARDA — PORTFÓLIO
-   Style principal — semântico & acessível
-   ===================================================== */
-
 /* ──────────────────── RESET & BASE ──────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -279,20 +274,6 @@ body.loading {
 .nav__link:hover::after {
   width: 100%;
 }
-
-.nav__link--cta {
-  color: var(--clr-accent-2);
-  padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--radius);
-  transition: background var(--t-fast), color var(--t-fast);
-}
-
-.nav__link--cta:hover {
-  background: var(--clr-accent);
-  color: var(--clr-white);
-}
-
-.nav__link--cta::after { display: none; }
 
 .nav__toggle {
   display: none;
@@ -1113,11 +1094,31 @@ section {
   gap: var(--sp-2);
 }
 
-.project-card__tech li {
+.hability-javascript {
   font-family: var(--ff-mono);
   font-size: var(--fs-xs);
-  color: var(--clr-accent-3);
-  background: rgba(124,58,237,0.08);
+  color: var(--clr-white);
+  background: rgba(108, 126, 43, 0.288);
+  border: 1px solid rgba(240, 240, 240, 0.15);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: 6px;
+}
+
+.hability-html {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--clr-white);
+  background: rgba(248, 140, 68, 0.178);
+  border: 1px solid rgba(219, 213, 230, 0.15);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: 6px;
+}
+
+.hability-css {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--clr-white);
+  background: rgba(124, 58, 237, 0.199);
   border: 1px solid rgba(124,58,237,0.15);
   padding: var(--sp-1) var(--sp-3);
   border-radius: 6px;

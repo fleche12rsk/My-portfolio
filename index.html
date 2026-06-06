@@ -42,7 +42,7 @@
         <li><a class="nav__link" href="#sobre">Sobre</a></li>
         <li><a class="nav__link" href="#habilidades">Habilidades</a></li>
         <li><a class="nav__link" href="#projetos">Projetos</a></li>
-        <li><a class="nav__link nav__link--cta" href="#contato">Contato</a></li>
+        <li><a class="nav__link" href="#contato">Contato</a></li>
       </ul>
     </nav>
   </header>
@@ -266,7 +266,7 @@
               <tr>
                 <td data-label="Tecnologia"><strong>JavaScript</strong></td>
                 <td data-label="Nível"><span class="badge badge--yellow">Básico</span></td>
-                <td data-label="Descrição">Scripts client-side e manipulação do DOM.</td>
+                <td data-label="Descrição">Criação de funções, callbacks e sistemas.</td>
               </tr>
               <tr>
                 <td data-label="Tecnologia"><strong>Adobe Premiere</strong></td>
@@ -318,9 +318,9 @@
                 Este portfólio — segundo projeto desenvolvido independente, desenvolvido com suporte de inteligência artificial. Construído com HTML semântico, CSS moderno (Flexbox + Grid + Variáveis) e JavaScript. Foco em acessibilidade, animações e design profissional.
               </p>
               <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript</li>
+                <li class="hability-html">HTML</li>
+                <li class="hability-css">CSS</li>
+                <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
                 <a href="https://github.com/fleche12rsk/Meu-portifio" class="btn btn--sm btn--primary" aria-label="Ver código do portfólio no GitHub">Código</a>
@@ -348,15 +348,53 @@
             </div>
             <div class="project-card__body">
               <span class="project-card__tag">Primeiro Projeto</span>
-              <h3 class="project-card__title">Landing Page</h3>
+              <h3 class="project-card__title">SkillMatch JS</h3>
               <p class="project-card__desc">
-                Primeiro projeto desenvolvido realizando o curso de programação Front-End gerenciado pela SCTEC. Introdução prática aos fundamentos do JavaScript, marcando o início da jornada no front-end.
+                Primeiro projeto desenvolvido realizando o curso de programação Front-End gerenciado pela SCTEC. Objetivo de analisar o candidato e a vaga, e indicar o nível/porcentagem de compatibilidade entre ambos, habilidades faltantes, etc.., utilizando JavaScript para processar as informações e apresentar os resultados.
               </p>
               <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li>JavaScript</li>       
+                <li class="hability-javascript">JavaScript</li>  
               </ul>
               <div class="project-card__links">
-                <a href="https://github.com/fleche12rsk/SkillMatch-JS" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
+                <a href="https://github.com/fleche12rsk/SkillMatch-JS" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
+                
+              </div>
+            </div>
+            <br>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__visual" aria-hidden="true">
+              <div class="project-card__preview project-card__preview--alt">
+                <div class="browser-mock">
+                  <div class="browser-mock__bar">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-mock__screen">
+                    <div class="browser-mock__content">
+                      <div class="mock-hero"></div>
+                      <div class="mock-line"></div>
+                      <div class="mock-line mock-line--short"></div>
+                      <div class="mock-btn"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__tag">Segundo Projeto</span>
+              <h3 class="project-card__title">Salão de beleza</h3>
+              <p class="project-card__desc">
+                Este projeto é uma Landing Page desenvolvida utilizando HTML, CSS e JavaScript, utilizando conceitos de design responsivo e interatividade para criar uma experiência atraente e imersiva para os usuários.
+              </p>
+              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
+                <li class="hability-html">HTML</li>       
+                <li class="hability-css">CSS</li>       
+                <li class="hability-javascript" >JavaScript</li>       
+              </ul>
+              <div class="project-card__links">
+                <a href="https://github.com/fleche12rsk/landing-page-01" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
+                <a href="https://fleche12rsk.github.io/landing-page-01/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Acessar o website">Acessar Website</a>
               </div>
             </div>
             <br>
@@ -417,6 +455,10 @@
               <a href="https://www.instagram.com/mauriciosardafilho/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mauricio Sarda">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
                 Instagram
+              </a>
+              <a href="https://wa.me/5547933805454?text=Olá!%20Gostaria%20de%20saber%20mais%20informações%20sobre%20orçamentos%20e%20outras%20coisas." class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mauricio Sarda">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.827L.057 23.428a.75.75 0 0 0 .921.921l5.601-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.505-5.228-1.387l-.374-.22-3.878 1.016 1.016-3.878-.22-.374A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                WhatsApp
               </a>
             </nav>
           </aside>
