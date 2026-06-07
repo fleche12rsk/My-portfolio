@@ -1045,10 +1045,38 @@ section {
   margin-bottom: 4px;
 }
 
+.mock-hero_02 {
+  height: 50px;
+  background: linear-gradient(90deg, rgba(248, 219, 188, 0.2), rgba(250, 237, 224, 0.1));
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.mock-hero_03 {
+  height: 50px;
+  background: linear-gradient(90deg, rgba(64, 199, 120, 0.2), rgba(112, 177, 139, 0.1));
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
 .mock-btn {
   height: 24px;
   width: 80px;
   background: rgba(124,58,237,0.3);
+  border-radius: 4px;
+}
+
+.mock-btn_02 {
+  height: 24px;
+  width: 80px;
+  background: rgba(255, 238, 220, 0.3);
+  border-radius: 4px;
+}
+
+.mock-btn_03 {
+  height: 24px;
+  width: 80px;
+  background: rgba(64, 199, 120, 0.3);
   border-radius: 4px;
 }
 

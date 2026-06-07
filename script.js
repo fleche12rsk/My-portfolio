@@ -375,3 +375,23 @@ if (photoFrame && window.matchMedia('(pointer: fine)').matches) {
 const style = document.createElement('style');
 style.textContent = `.nav__link--active { color: var(--clr-accent-2) !important; }`;
 document.head.appendChild(style);
+
+const telInput = document.getElementById('telefone');
+
+telInput.addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g, '');
+  let result = '';
+
+  // Se começar com 55 (Brasil), formata automaticamente
+  if (v.startsWith('55')) {
+    if (v.length > 0)  result = '+55';
+    if (v.length > 2)  result += ' (' + v.substring(2, 4);
+    if (v.length > 4)  result += ') ' + v.substring(4, 9);
+    if (v.length > 9)  result += '-' + v.substring(9, 13);
+  } else {
+    // Outros países — só permite os caracteres válidos, sem forçar formato
+    result = e.target.value.replace(/[^\d\s\+\(\)\-]/g, '');
+  }
+
+  e.target.value = result;
+});
