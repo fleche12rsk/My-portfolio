@@ -39,7 +39,7 @@ In this portfolio, you will find links and details about the practical projects 
 I am always open to new opportunities, collaborations, and lots of learning.
 
 * **LinkedIn:** [mauricio-sarda-filho](https://www.linkedin.com/in/mauricio-sarda-filho/)
-* **Instagram:** [@mauriciosardafilho](https://www.instagram.com/mauriciosardafilho/)
+* **Instagram:** [@micio_dev](https://www.instagram.com/micio_dev/)
 * **Email:** [mauriciorenatosarda@gmail.com](mailto:mauriciorenatosarda@gmail.com)
 
 ---
