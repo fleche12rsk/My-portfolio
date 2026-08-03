@@ -1,5 +1,60 @@
 'use strict';
 
+// ──────── IDIOMA (textos gerados pelo JS) ────────
+const LANG = document.documentElement.lang.toLowerCase().startsWith('pt') ? 'pt' : 'en';
+
+const I18N = {
+  pt: {
+    roles: [
+      'Desenvolvedor Front-End',
+      'Entusiasta de Tecnologia',
+      'Editor de Vídeo',
+      'Em constante evolução',
+    ],
+    formRequired: 'Por favor, preencha todos os campos obrigatórios.',
+    formEmail:    'Por favor, insira um e-mail válido.',
+    formSuccess:  'Mensagem enviada com sucesso! Entrarei em contato em breve. 🚀',
+    formSending:  'Enviando...',
+    formSubmit:   'Enviar Mensagem',
+  },
+  en: {
+    roles: [
+      'Front-End Developer',
+      'Technology Enthusiast',
+      'Video Editor',
+      'Always evolving',
+    ],
+    formRequired: 'Please fill in all required fields.',
+    formEmail:    'Please enter a valid e-mail address.',
+    formSuccess:  'Message sent successfully! I will get back to you shortly. 🚀',
+    formSending:  'Sending...',
+    formSubmit:   'Send Message',
+  },
+};
+
+const T = I18N[LANG];
+
+// ──────── TROCA DE IDIOMA (salva a escolha no localStorage) ────────
+const langSwitch = document.getElementById('langSwitch');
+
+if (langSwitch) {
+  langSwitch.querySelectorAll('.nav__lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const chosen = btn.dataset.lang;
+
+      // Já está nesta versão — não navega
+      if (chosen === LANG) {
+        e.preventDefault();
+        return;
+      }
+
+      e.preventDefault();
+      try { localStorage.setItem('micio-lang', chosen); } catch (err) { /* storage bloqueado */ }
+      window.location.href = btn.getAttribute('href') + window.location.hash;
+    });
+  });
+}
+
 // ──────── LOADER ────────
 const loader = document.getElementById('loader');
 const body   = document.body;
@@ -95,12 +150,7 @@ document.addEventListener('keydown', (e) => {
 
 // ──────── TYPEWRITER ────────
 const typewriterEl = document.querySelector('.typewriter__text');
-const roles = [
-  'Desenvolvedor Front-End',
-  'Entusiasta de Tecnologia',
-  'Editor de Vídeo',
-  'Em constante evolução',
-];
+const roles = T.roles;
 
 let roleIndex  = 0;
 let charIndex  = 0;
@@ -225,25 +275,25 @@ form.addEventListener('submit', (e) => {
 
   // Validação simples
   if (!nome || !email || !mensagem) {
-    showFeedback('Por favor, preencha todos os campos obrigatórios.', 'error');
+    showFeedback(T.formRequired, 'error');
     return;
   }
 
   if (!isValidEmail(email)) {
-    showFeedback('Por favor, insira um e-mail válido.', 'error');
+    showFeedback(T.formEmail, 'error');
     return;
   }
 
   // Simulação de envio
   const submitBtn = form.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Enviando...';
+  submitBtn.textContent = T.formSending;
 
   setTimeout(() => {
-    showFeedback('Mensagem enviada com sucesso! Entrarei em contato em breve. 🚀', 'success');
+    showFeedback(T.formSuccess, 'success');
     form.reset();
     submitBtn.disabled = false;
-    submitBtn.innerHTML = 'Enviar Mensagem <span class="btn__icon" aria-hidden="true">→</span>';
+    submitBtn.innerHTML = `${T.formSubmit} <span class="btn__icon" aria-hidden="true">→</span>`;
   }, 1500);
 });
 

@@ -1,54 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Mauricio Sarda Filho — Desenvolvedor Web Front-End" />
+  <meta name="description" content="Portfolio of Mauricio Sarda Filho — Front-End Web Developer" />
   <meta name="author" content="Mauricio Sarda Filho" />
-  <title>Mauricio Sarda — Dev Front-End</title>
+  <title>Mauricio Sarda — Front-End Dev</title>
 
-  <!-- ===== IDIOMA: canônica + versões alternativas ===== -->
-  <link rel="canonical" href="https://micio.dev/" />
+  <!-- ===== LANGUAGE: canonical + alternate versions ===== -->
+  <link rel="canonical" href="https://micio.dev/en/" />
   <link rel="alternate" hreflang="pt-BR" href="https://micio.dev/" />
   <link rel="alternate" hreflang="en" href="https://micio.dev/en/" />
   <link rel="alternate" hreflang="x-default" href="https://micio.dev/" />
 
-  <!-- ===== REDIRECIONAMENTO DE IDIOMA (roda antes da renderização) ===== -->
+  <!-- ===== LANGUAGE REDIRECT (runs before rendering) ===== -->
   <script>
     (function () {
       'use strict';
 
-      var CURRENT   = 'pt';              // idioma desta página
-      var OTHER_URL = 'en/index.html';   // caminho da versão em inglês
-      var IS_ENTRY  = true;              // página de entrada: detecta o idioma do dispositivo
+      var CURRENT   = 'en';              // language of this page
+      var OTHER_URL = '../index.html';   // path to the Portuguese version
+      var IS_ENTRY  = false;             // only the root page auto-detects the device language
       var KEY       = 'micio-lang';
 
       var saved = null;
-      try { saved = localStorage.getItem(KEY); } catch (e) { /* storage bloqueado */ }
+      try { saved = localStorage.getItem(KEY); } catch (e) { /* storage blocked */ }
 
-      // 1. Preferência salva pelo usuário sempre vence
+      // 1. A saved user preference always wins
       if (saved === 'pt' || saved === 'en') {
         if (saved !== CURRENT) location.replace(OTHER_URL + location.hash);
         return;
       }
 
-      // 2. Sem preferência salva: usa o idioma do dispositivo
+      // 2. No saved preference: fall back to the device language
       if (!IS_ENTRY) return;
 
       var langs = (navigator.languages && navigator.languages.length)
         ? navigator.languages
         : [navigator.language || CURRENT];
 
-      var preferePt = String(langs[0]).toLowerCase().indexOf('pt') === 0;
+      var prefersPt = String(langs[0]).toLowerCase().indexOf('pt') === 0;
 
-      if (!preferePt) location.replace(OTHER_URL + location.hash);
+      if (prefersPt) location.replace(OTHER_URL + location.hash);
     })();
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="IMAGES/favicon.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../IMAGES/favicon.png" />
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -63,39 +64,39 @@
 
 <body>
 
-  <!-- ===== CURSOR PERSONALIZADO ===== -->
+  <!-- ===== CUSTOM CURSOR ===== -->
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-follower" aria-hidden="true"></div>
 
   <!-- ===== LOADER ===== -->
-  <div class="loader" id="loader" role="status" aria-label="Carregando...">
+  <div class="loader" id="loader" role="status" aria-label="Loading...">
     <div class="loader__inner">
       <span class="loader__text">MSF</span>
       <div class="loader__bar"></div>
     </div>
   </div>
 
-  <!-- ===== CABEÇALHO / NAVEGAÇÃO ===== -->
+  <!-- ===== HEADER / NAVIGATION ===== -->
   <header class="header" id="header" role="banner">
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#inicio" class="nav__logo" aria-label="Ir para o início">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#inicio" class="nav__logo" aria-label="Go to the top">
         <span class="nav__logo-mark">M</span>auricio<span class="nav__logo-dot">.</span>
       </a>
 
       <div class="nav__actions">
         <ul class="nav__menu" id="navMenu" role="list">
-          <li><a class="nav__link" href="#sobre">Sobre</a></li>
-          <li><a class="nav__link" href="#habilidades">Habilidades</a></li>
-          <li><a class="nav__link" href="#projetos">Projetos</a></li>
-          <li><a class="nav__link" href="#contato">Contato</a></li>
+          <li><a class="nav__link" href="#sobre">About</a></li>
+          <li><a class="nav__link" href="#habilidades">Skills</a></li>
+          <li><a class="nav__link" href="#projetos">Projects</a></li>
+          <li><a class="nav__link" href="#contato">Contact</a></li>
         </ul>
 
-        <div class="nav__lang" id="langSwitch" role="group" aria-label="Idioma do site">
-          <a class="nav__lang-btn" href="index.html" data-lang="pt" lang="pt-BR" hreflang="pt-BR" aria-current="page">PT</a>
-          <a class="nav__lang-btn" href="en/index.html" data-lang="en" lang="en" hreflang="en">EN</a>
+        <div class="nav__lang" id="langSwitch" role="group" aria-label="Site language">
+          <a class="nav__lang-btn" href="../index.html" data-lang="pt" lang="pt-BR" hreflang="pt-BR">PT</a>
+          <a class="nav__lang-btn" href="index.html" data-lang="en" lang="en" hreflang="en" aria-current="page">EN</a>
         </div>
 
-        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
           <span class="nav__toggle-line"></span>
           <span class="nav__toggle-line"></span>
           <span class="nav__toggle-line"></span>
@@ -106,7 +107,7 @@
 
   <main id="conteudo-principal">
 
-    <!-- ===== HERO / INÍCIO ===== -->
+    <!-- ===== HERO / HOME ===== -->
     <section class="hero" id="inicio" aria-labelledby="hero-titulo">
       <div class="hero__bg" aria-hidden="true">
         <div class="hero__grid"></div>
@@ -115,31 +116,31 @@
       </div>
 
       <div class="hero__content">
-        <p class="hero__intro reveal-text">Olá, eu sou</p>
+        <p class="hero__intro reveal-text">Hello, I'm</p>
         <h1 class="hero__name reveal-text" id="hero-titulo">
           Mauricio<br />
           <span class="hero__surname">Sarda.</span>
         </h1>
         <p class="hero__role reveal-text">
-          <span class="typewriter" aria-label="Desenvolvedor Front-End">
+          <span class="typewriter" aria-label="Front-End Developer">
             <span class="typewriter__text"></span>
             <span class="typewriter__cursor" aria-hidden="true">|</span>
           </span>
         </p>
         <p class="hero__desc reveal-text">
-          Apaixonado por tecnologia e criação de experiências digitais únicas. Transformando ideias em interfaces funcionais e elegantes.
+          Passionate about technology and about crafting unique digital experiences. Turning ideas into functional, elegant interfaces.
         </p>
         <div class="hero__actions reveal-text">
-          <a class="btn btn--primary" href="#projetos">Ver Projetos</a>
-          <a class="btn btn--ghost" href="#contato">Vamos Conversar</a>
+          <a class="btn btn--primary" href="#projetos">View Projects</a>
+          <a class="btn btn--ghost" href="#contato">Let's Talk</a>
         </div>
       </div>
 
-      <figure class="hero__photo reveal-text" aria-label="Foto de Mauricio Sarda Filho">
+      <figure class="hero__photo reveal-text" aria-label="Photo of Mauricio Sarda Filho">
         <div class="hero__photo-frame">
           <img
-            src="IMAGES/IMG_3269.png"
-            alt="Mauricio Sarda Filho, desenvolvedor web front-end"
+            src="../IMAGES/IMG_3269.png"
+            alt="Mauricio Sarda Filho, front-end web developer"
             class="hero__img"
             width="400"
             height="400"
@@ -148,7 +149,7 @@
           <div class="hero__photo-ring hero__photo-ring--2" aria-hidden="true"></div>
           <div class="hero__photo-dots" aria-hidden="true"></div>
         </div>
-        <figcaption class="sr-only">Mauricio Sarda Filho — Desenvolvedor Web</figcaption>
+        <figcaption class="sr-only">Mauricio Sarda Filho — Web Developer</figcaption>
       </figure>
 
       <div class="hero__scroll" aria-hidden="true">
@@ -157,43 +158,43 @@
       </div>
     </section>
 
-    <!-- ===== SOBRE ===== -->
+    <!-- ===== ABOUT ===== -->
     <section class="sobre" id="sobre" aria-labelledby="sobre-titulo">
       <div class="container">
         <header class="section-header">
-          <span class="section-tag">01. Sobre mim</span>
-          <h2 class="section-title" id="sobre-titulo">Quem sou eu?</h2>
+          <span class="section-tag">01. About me</span>
+          <h2 class="section-title" id="sobre-titulo">Who am I?</h2>
         </header>
 
         <div class="sobre__grid">
           <article class="sobre__texto">
             <p>
-              Me chamo <strong>Mauricio Renato Sarda Filho</strong>, sou um desenvolvedor web em início de carreira, com sede de aprender e criar. Minha trajetória na tecnologia começou pela manutenção de hardware e edição de vídeo, e agora se expande para o universo do desenvolvimento web.
+              My name is <strong>Mauricio Renato Sarda Filho</strong>. I'm a web developer at the start of my career, eager to learn and to build. My path into technology began with hardware maintenance and video editing, and it now expands into the world of web development.
             </p>
             <p>
-              Atualmente foco no front-end — construindo interfaces semânticas, responsivas e acessíveis. Acredito que bom código e bom design andam juntos.
+              I currently focus on front-end — building semantic, responsive and accessible interfaces. I believe good code and good design go hand in hand.
             </p>
             <p>
-              Sou fluente em <strong>Inglês (B1)</strong> e tenho base em <strong>Alemão (A2)</strong>, o que me permite consumir documentação e colaborar em projetos internacionais.
+              I'm fluent in <strong>English (B1)</strong> and have a foundation in <strong>German (A2)</strong>, which lets me read documentation and collaborate on international projects.
             </p>
           </article>
 
-          <aside class="sobre__detalhes" aria-label="Detalhes pessoais">
+          <aside class="sobre__detalhes" aria-label="Personal details">
             <dl class="sobre__info-list">
               <div class="sobre__info-item">
-                <dt>Localização</dt>
-                <dd>Santa Catarina, Brasil</dd>
+                <dt>Location</dt>
+                <dd>Santa Catarina, Brazil</dd>
               </div>
               <div class="sobre__info-item">
-                <dt>Disponível</dt>
-                <dd><span class="status-badge status-badge--online">Aberto a oportunidades</span></dd>
+                <dt>Availability</dt>
+                <dd><span class="status-badge status-badge--online">Open to opportunities</span></dd>
               </div>
               <div class="sobre__info-item">
-                <dt>Idiomas</dt>
-                <dd>Português · Inglês B1 · Alemão A2</dd>
+                <dt>Languages</dt>
+                <dd>Portuguese · English B1 · German A2</dd>
               </div>
               <div class="sobre__info-item">
-                <dt>Foco</dt>
+                <dt>Focus</dt>
                 <dd>Front-End Development</dd>
               </div>
             </dl>
@@ -202,12 +203,12 @@
       </div>
     </section>
 
-    <!-- ===== HABILIDADES ===== -->
+    <!-- ===== SKILLS ===== -->
     <section class="habilidades" id="habilidades" aria-labelledby="habilidades-titulo">
       <div class="container">
         <header class="section-header">
-          <span class="section-tag">02. Habilidades</span>
-          <h2 class="section-title" id="habilidades-titulo">Minhas habilidades</h2>
+          <span class="section-tag">02. Skills</span>
+          <h2 class="section-title" id="habilidades-titulo">My skills</h2>
         </header>
 
         <div class="habilidades__grid">
@@ -218,12 +219,12 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
               </span>
               <h3 class="skill-card__name">HTML5</h3>
-              <span class="skill-card__level">Iniciante</span>
+              <span class="skill-card__level">Beginner</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 65%"></div>
             </div>
-            <p class="skill-card__desc">Estruturas semânticas, acessibilidade e design responsivo.</p>
+            <p class="skill-card__desc">Semantic structure, accessibility and responsive design.</p>
           </article>
 
           <article class="skill-card" data-delay="1">
@@ -232,12 +233,12 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               </span>
               <h3 class="skill-card__name">CSS3</h3>
-              <span class="skill-card__level">Iniciante</span>
+              <span class="skill-card__level">Beginner</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 60%"></div>
             </div>
-            <p class="skill-card__desc">Flexbox, Grid, animações CSS e design responsivo.</p>
+            <p class="skill-card__desc">Flexbox, Grid, CSS animations and responsive design.</p>
           </article>
 
           <article class="skill-card" data-delay="2">
@@ -246,12 +247,12 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </span>
               <h3 class="skill-card__name">JavaScript</h3>
-              <span class="skill-card__level">Básico</span>
+              <span class="skill-card__level">Basic</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 40%"></div>
             </div>
-            <p class="skill-card__desc">Criação de funções, callbacks e sistemas.</p>
+            <p class="skill-card__desc">Building functions, callbacks and systems.</p>
           </article>
 
           <article class="skill-card" data-delay="3">
@@ -259,13 +260,13 @@
               <span class="skill-card__icon" aria-hidden="true">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
               </span>
-              <h3 class="skill-card__name">Edição de Vídeo</h3>
-              <span class="skill-card__level">Intermediário</span>
+              <h3 class="skill-card__name">Video Editing</h3>
+              <span class="skill-card__level">Intermediate</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 75%"></div>
             </div>
-            <p class="skill-card__desc">Adobe Premiere Pro — cortes, animações, transições e edições.</p>
+            <p class="skill-card__desc">Adobe Premiere Pro — cuts, animations, transitions and editing.</p>
           </article>
 
           <article class="skill-card" data-delay="4">
@@ -273,13 +274,13 @@
               <span class="skill-card__icon" aria-hidden="true">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
               </span>
-              <h3 class="skill-card__name">Manutenção de PCs</h3>
-              <span class="skill-card__level">Intermediário</span>
+              <h3 class="skill-card__name">PC Maintenance</h3>
+              <span class="skill-card__level">Intermediate</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 80%"></div>
             </div>
-            <p class="skill-card__desc">Hardware, diagnóstico, montagem e manutenção de computadores e notebooks.</p>
+            <p class="skill-card__desc">Hardware, diagnostics, assembly and maintenance of desktops and laptops.</p>
           </article>
 
           <article class="skill-card" data-delay="5">
@@ -287,48 +288,48 @@
               <span class="skill-card__icon" aria-hidden="true">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </span>
-              <h3 class="skill-card__name">Inglês B1</h3>
-              <span class="skill-card__level">Intermediário</span>
+              <h3 class="skill-card__name">English B1</h3>
+              <span class="skill-card__level">Intermediate</span>
             </header>
             <div class="skill-card__bar" aria-hidden="true">
               <div class="skill-card__fill" style="--fill: 55%"></div>
             </div>
-            <p class="skill-card__desc">Leitura de documentação, comunicação escrita e colaboração técnica.</p>
+            <p class="skill-card__desc">Reading documentation, written communication and technical collaboration.</p>
           </article>
 
         </div>
 
-        <!-- Tabela de Tecnologias -->
-        <div class="tech-table-wrapper" role="region" aria-label="Tabela de tecnologias">
+        <!-- Technologies table -->
+        <div class="tech-table-wrapper" role="region" aria-label="Technologies table">
           <table class="tech-table">
-            <caption class="tech-table__caption">Resumo de tecnologias e níveis de experiência</caption>
+            <caption class="tech-table__caption">Summary of technologies and experience levels</caption>
             <thead>
               <tr>
-                <th scope="col">Tecnologia</th>
-                <th scope="col">Nível</th>
-                <th scope="col">Descrição</th>
+                <th scope="col">Technology</th>
+                <th scope="col">Level</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td data-label="Tecnologia"><strong>HTML5</strong></td>
-                <td data-label="Nível"><span class="badge badge--blue">Iniciante</span></td>
-                <td data-label="Descrição">Estruturas semânticas e responsivas.</td>
+                <td data-label="Technology"><strong>HTML5</strong></td>
+                <td data-label="Level"><span class="badge badge--blue">Beginner</span></td>
+                <td data-label="Description">Semantic and responsive structure.</td>
               </tr>
               <tr>
-                <td data-label="Tecnologia"><strong>CSS3</strong></td>
-                <td data-label="Nível"><span class="badge badge--blue">Iniciante</span></td>
-                <td data-label="Descrição">Flexbox, Grid, animações e design responsivo.</td>
+                <td data-label="Technology"><strong>CSS3</strong></td>
+                <td data-label="Level"><span class="badge badge--blue">Beginner</span></td>
+                <td data-label="Description">Flexbox, Grid, animations and responsive design.</td>
               </tr>
               <tr>
-                <td data-label="Tecnologia"><strong>JavaScript</strong></td>
-                <td data-label="Nível"><span class="badge badge--yellow">Básico</span></td>
-                <td data-label="Descrição">Criação de funções, callbacks e sistemas.</td>
+                <td data-label="Technology"><strong>JavaScript</strong></td>
+                <td data-label="Level"><span class="badge badge--yellow">Basic</span></td>
+                <td data-label="Description">Building functions, callbacks and systems.</td>
               </tr>
               <tr>
-                <td data-label="Tecnologia"><strong>Adobe Premiere</strong></td>
-                <td data-label="Nível"><span class="badge badge--green">Intermediário</span></td>
-                <td data-label="Descrição">Edição, corte e edições.</td>
+                <td data-label="Technology"><strong>Adobe Premiere</strong></td>
+                <td data-label="Level"><span class="badge badge--green">Intermediate</span></td>
+                <td data-label="Description">Editing, cutting and post-production.</td>
               </tr>
             </tbody>
           </table>
@@ -336,12 +337,12 @@
       </div>
     </section>
 
-    <!-- ===== PROJETOS ===== -->
+    <!-- ===== PROJECTS ===== -->
     <section class="projetos" id="projetos" aria-labelledby="projetos-titulo">
       <div class="container">
         <header class="section-header">
-          <span class="section-tag">03. Projetos</span>
-          <h2 class="section-title" id="projetos-titulo">O que eu construí</h2>
+          <span class="section-tag">03. Projects</span>
+          <h2 class="section-title" id="projetos-titulo">What I've built</h2>
         </header>
 
         <div class="projetos__grid">
@@ -369,18 +370,18 @@
               </div>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Projeto Pessoal</span>
-              <h3 class="project-card__title">Portfólio Dev</h3>
+              <span class="project-card__tag">Personal Project</span>
+              <h3 class="project-card__title">Dev Portfolio</h3>
               <p class="project-card__desc">
-                Este portfólio — segundo projeto desenvolvido independente, desenvolvido com suporte de inteligência artificial. Construído com HTML semântico, CSS moderno (Flexbox + Grid + Variáveis) e JavaScript. Foco em acessibilidade, animações e design profissional.
+                This portfolio — my second independent project, developed with the support of artificial intelligence. Built with semantic HTML, modern CSS (Flexbox + Grid + Variables) and JavaScript. Focused on accessibility, animations and professional design.
               </p>
-              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
+              <ul class="project-card__tech" role="list" aria-label="Technologies used">
                 <li class="hability-html">HTML</li>
                 <li class="hability-css">CSS</li>
                 <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
-                <a href="https://github.com/fleche12rsk/My-portfolio" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código do portfólio no GitHub">Código</a>
+                <a href="https://github.com/fleche12rsk/My-portfolio" target="_blank" class="btn btn--sm btn--primary" aria-label="View the portfolio source code on GitHub">Source Code</a>
               </div>
             </div>
           </article>
@@ -404,17 +405,16 @@
               </div>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Primeiro Projeto</span>
+              <span class="project-card__tag">First Project</span>
               <h3 class="project-card__title">SkillMatch JS</h3>
               <p class="project-card__desc">
-                Primeiro projeto desenvolvido realizando o curso de programação Front-End gerenciado pela SCTEC. Objetivo de analisar o candidato e a vaga, e indicar o nível/porcentagem de compatibilidade entre ambos, habilidades faltantes, etc.., utilizando JavaScript para processar as informações e apresentar os resultados.
+                My first project, built during the Front-End programming course run by SCTEC. Its goal is to analyse a candidate and a job opening and report the compatibility level/percentage between them, missing skills and more, using JavaScript to process the information and present the results.
               </p>
-              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li class="hability-javascript">JavaScript</li>  
+              <ul class="project-card__tech" role="list" aria-label="Technologies used">
+                <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
-                <a href="https://github.com/fleche12rsk/SkillMatch-JS" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
-                
+                <a href="https://github.com/fleche12rsk/SkillMatch-JS" target="_blank" class="btn btn--sm btn--primary" aria-label="View the SkillMatch JS source code on GitHub">Source Code</a>
               </div>
             </div>
             <br>
@@ -439,19 +439,19 @@
               </div>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Segundo Projeto</span>
-              <h3 class="project-card__title">Salão de beleza</h3>
+              <span class="project-card__tag">Second Project</span>
+              <h3 class="project-card__title">Beauty Salon</h3>
               <p class="project-card__desc">
-                Este projeto é uma Landing Page desenvolvida utilizando HTML, CSS e JavaScript, utilizando conceitos de design responsivo e interatividade para criar uma experiência atraente e imersiva para os usuários.
+                A landing page built with HTML, CSS and JavaScript, applying responsive design and interactivity concepts to create an attractive and immersive experience for users.
               </p>
-              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li class="hability-html">HTML</li>       
-                <li class="hability-css">CSS</li>       
-                <li class="hability-javascript" >JavaScript</li>       
+              <ul class="project-card__tech" role="list" aria-label="Technologies used">
+                <li class="hability-html">HTML</li>
+                <li class="hability-css">CSS</li>
+                <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
-                <a href="https://github.com/fleche12rsk/landing-page-01" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
-                <a href="https://fleche12rsk.github.io/landing-page-01/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Acessar o website">Acessar Website</a>
+                <a href="https://github.com/fleche12rsk/landing-page-01" target="_blank" class="btn btn--sm btn--primary" aria-label="View the landing page source code on GitHub">Source Code</a>
+                <a href="https://fleche12rsk.github.io/landing-page-01/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Visit the website">Visit Website</a>
               </div>
             </div>
             <br>
@@ -476,18 +476,18 @@
               </div>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Terceiro Projeto</span>
+              <span class="project-card__tag">Third Project</span>
               <h3 class="project-card__title">Sítio Três Cascatas</h3>
               <p class="project-card__desc">
-                Este projeto é uma Landing Page desenvolvida para os donos da hospedagem Sítio Três Cascatas, utilizando um design responsivo e acessível para criar uma experiência atraente e imersiva para os usuários.
+                A landing page built for the owners of the Sítio Três Cascatas lodging, using responsive and accessible design to create an attractive and immersive experience for users.
               </p>
-              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li class="hability-html">HTML</li>       
-                <li class="hability-css">CSS</li>       
-                <li class="hability-javascript" >JavaScript</li>       
+              <ul class="project-card__tech" role="list" aria-label="Technologies used">
+                <li class="hability-html">HTML</li>
+                <li class="hability-css">CSS</li>
+                <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
-                <a href="https://sitiotrescascatas.com.br/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Acessar o website">Acessar Website</a>
+                <a href="https://sitiotrescascatas.com.br/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Visit the website">Visit Website</a>
               </div>
             </div>
             <br>
@@ -512,31 +512,31 @@
               </div>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Quarto Projeto</span>
-              <h3 class="project-card__title">Salão de beleza v2</h3>
+              <span class="project-card__tag">Fourth Project</span>
+              <h3 class="project-card__title">Beauty Salon v2</h3>
               <p class="project-card__desc">
-                Este projeto é uma Landing Page desenvolvida utilizando HTML, CSS e JavaScript, utilizando conceitos de design responsivo e interatividade para criar uma experiência atraente e imersiva para os usuários.
+                A landing page built with HTML, CSS and JavaScript, applying responsive design and interactivity concepts to create an attractive and immersive experience for users.
               </p>
-              <ul class="project-card__tech" role="list" aria-label="Tecnologias usadas">
-                <li class="hability-html">HTML</li>       
-                <li class="hability-css">CSS</li>       
-                <li class="hability-javascript" >JavaScript</li>       
+              <ul class="project-card__tech" role="list" aria-label="Technologies used">
+                <li class="hability-html">HTML</li>
+                <li class="hability-css">CSS</li>
+                <li class="hability-javascript">JavaScript</li>
               </ul>
               <div class="project-card__links">
-                <a href="https://github.com/fleche12rsk/landing-page-02" target="_blank" class="btn btn--sm btn--primary" aria-label="Ver código da landing page no GitHub">Código</a>
-                <a href="https://fleche12rsk.github.io/landing-page-02/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Acessar o website">Acessar Website</a>
+                <a href="https://github.com/fleche12rsk/landing-page-02" target="_blank" class="btn btn--sm btn--primary" aria-label="View the landing page source code on GitHub">Source Code</a>
+                <a href="https://fleche12rsk.github.io/landing-page-02/" target="_blank" class="btn btn--sm btn--ghost" aria-label="Visit the website">Visit Website</a>
               </div>
             </div>
             <br>
           </article>
 
-          <!-- Card "Em Breve" -->
-          <article class="project-card project-card--soon" aria-label="Projeto em desenvolvimento">
+          <!-- "Coming Soon" card -->
+          <article class="project-card project-card--soon" aria-label="Project in development">
             <div class="project-card__soon-content">
               <span class="project-card__soon-icon" aria-hidden="true">🚧</span>
-              <h3 class="project-card__title">Próximo Projeto</h3>
-              <p>Em desenvolvimento. Novas ideias sempre surgindo.</p>
-              <span class="badge badge--yellow">Em breve</span>
+              <h3 class="project-card__title">Next Project</h3>
+              <p>In development. New ideas always on the way.</p>
+              <span class="badge badge--yellow">Coming soon</span>
             </div>
           </article>
 
@@ -544,18 +544,18 @@
       </div>
     </section>
 
-    <!-- ===== CONTATO ===== -->
+    <!-- ===== CONTACT ===== -->
     <section class="contato" id="contato" aria-labelledby="contato-titulo">
       <div class="container">
         <header class="section-header">
-          <span class="section-tag">04. Contato</span>
-          <h2 class="section-title" id="contato-titulo">Vamos trabalhar juntos</h2>
-          <p class="section-subtitle">Tem um projeto em mente? Entre em contato — adoro novas oportunidades.</p>
+          <span class="section-tag">04. Contact</span>
+          <h2 class="section-title" id="contato-titulo">Let's work together</h2>
+          <p class="section-subtitle">Got a project in mind? Get in touch — I love new opportunities.</p>
         </header>
 
         <div class="contato__grid">
 
-          <aside class="contato__info" aria-label="Informações de contato">
+          <aside class="contato__info" aria-label="Contact information">
             <address class="contact-info">
               <div class="contact-info__item">
                 <span class="contact-info__icon" aria-hidden="true">
@@ -571,22 +571,22 @@
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
                 <div>
-                  <dt>Telefone</dt>
-                  <dd><a href="tel:+5547933805454">(47) 93380-5454</a></dd>
+                  <dt>Phone</dt>
+                  <dd><a href="tel:+5547933805454">+55 (47) 93380-5454</a></dd>
                 </div>
               </div>
             </address>
 
-            <nav class="social-links" aria-label="Redes sociais">
-              <a href="https://www.linkedin.com/in/mauricio-sarda-filho/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Mauricio Sarda">
+            <nav class="social-links" aria-label="Social media">
+              <a href="https://www.linkedin.com/in/mauricio-sarda-filho/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Mauricio Sarda on LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 LinkedIn
               </a>
-              <a href="https://www.instagram.com/mauriciosardafilho/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mauricio Sarda">
+              <a href="https://www.instagram.com/mauriciosardafilho/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Mauricio Sarda on Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
                 Instagram
               </a>
-              <a href="https://wa.me/5547933805454?text=Olá!%20Gostaria%20de%20saber%20mais%20informações%20sobre%20orçamentos%20e%20outras%20coisas." class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mauricio Sarda">
+              <a href="https://wa.me/5547933805454?text=Hello!%20I'd%20like%20to%20know%20more%20about%20quotes%20and%20other%20details." class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Mauricio Sarda on WhatsApp">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.827L.057 23.428a.75.75 0 0 0 .921.921l5.601-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.505-5.228-1.387l-.374-.22-3.878 1.016 1.016-3.878-.22-.374A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                 WhatsApp
               </a>
@@ -594,9 +594,9 @@
           </aside>
 
           <div class="contato__form-wrapper">
-            <form action="https://formsubmit.co/mauriciorenatosarda@gmail.com" method="POST" class="contact-form" id="formulario-contato" novalidate aria-label="Formulário de contato">
+            <form action="https://formsubmit.co/mauriciorenatosarda@gmail.com" method="POST" class="contact-form" id="formulario-contato" novalidate aria-label="Contact form">
               <div class="form-group">
-                <label class="form-label" for="nome">Nome completo <span aria-hidden="true">*</span></label>
+                <label class="form-label" for="nome">Full name <span aria-hidden="true">*</span></label>
                 <input
                   class="form-input"
                   type="text"
@@ -604,7 +604,7 @@
                   name="nome"
                   required
                   autocomplete="name"
-                  placeholder="Seu nome"
+                  placeholder="Your name"
                   aria-required="true"
                 />
               </div>
@@ -618,13 +618,13 @@
                   name="email"
                   required
                   autocomplete="email"
-                  placeholder="seu@email.com"
+                  placeholder="you@email.com"
                   aria-required="true"
                 />
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="telefone">Telefone</label>
+                <label class="form-label" for="telefone">Phone</label>
                 <input
                   class="form-input"
                   type="tel"
@@ -637,32 +637,32 @@
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="assunto">Assunto</label>
+                <label class="form-label" for="assunto">Subject</label>
                 <select class="form-select" id="assunto" name="assunto">
-                  <option value="">Selecione um assunto</option>
-                  <option value="orcamento">Orçamento</option>
-                  <option value="duvida">Dúvida</option>
-                  <option value="colaboracao">Colaboração</option>
-                  <option value="outro">Outro</option>
+                  <option value="">Select a subject</option>
+                  <option value="orcamento">Quote</option>
+                  <option value="duvida">Question</option>
+                  <option value="colaboracao">Collaboration</option>
+                  <option value="outro">Other</option>
                 </select>
               </div>
 
               <div class="form-group form-group--full">
-                <label class="form-label" for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
+                <label class="form-label" for="mensagem">Message <span aria-hidden="true">*</span></label>
                 <textarea
                   class="form-textarea"
                   id="mensagem"
                   name="mensagem"
                   rows="5"
                   required
-                  placeholder="Conta-me sobre seu projeto ou ideia..."
+                  placeholder="Tell me about your project or idea..."
                   aria-required="true"
                 ></textarea>
               </div>
 
               <div class="form-group form-group--full">
                 <button class="btn btn--primary btn--full" type="submit">
-                  Enviar Mensagem
+                  Send Message
                   <span class="btn__icon" aria-hidden="true">→</span>
                 </button>
               </div>
@@ -677,22 +677,22 @@
 
   </main>
 
-  <!-- ===== RODAPÉ ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__inner">
         <p class="footer__copy">
           &copy; <time datetime="2026">2026</time>
           <a href="https://www.instagram.com/mauriciosardafilho/" target="_blank" rel="noopener noreferrer">Mauricio Renato Sarda Filho</a>.
-          Todos os direitos reservados.
+          All rights reserved.
         </p>
         <p class="footer__made">
-          Feito com <span aria-label="amor">❤️</span> e muito café ☕
+          Made with <span aria-label="love">❤️</span> and lots of coffee ☕
         </p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>
